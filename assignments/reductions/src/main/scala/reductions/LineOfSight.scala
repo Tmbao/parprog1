@@ -58,7 +58,7 @@ object LineOfSight {
     var opt: Float = 0
     var i = from
     while (i < until) {
-      opt = math.max(opt, if (i == 0) 0 else input(i) / i)
+      opt = math.max(opt, input(i) / i)
       i = i + 1
     }
     opt
@@ -95,7 +95,7 @@ object LineOfSight {
     var acc = startingAngle
     var i = from
     while (i < until) {
-      output(i) = math.max(acc, if (i == 0) 0 else input(i) / i)
+      output(i) = math.max(acc, input(i) / i)
       acc = output(i)
       i = i + 1
     }
@@ -117,7 +117,7 @@ object LineOfSight {
   /** Compute the line-of-sight in parallel. */
   def parLineOfSight(input: Array[Float], output: Array[Float],
     threshold: Int): Unit = {
-    val tree = upsweep(input, 0, input.length, threshold)
+    val tree = upsweep(input, 1, input.length, threshold)
     downsweep(input, output, 0, tree)
   }
 }
